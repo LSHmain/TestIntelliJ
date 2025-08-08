@@ -11,16 +11,16 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
         scanBasePackages = {
                 "com.shinhan.sbproject",
                 "net.firstzone.myapp",
-                "com.test.chat"
+
         }
 )
 @EnableJpaRepositories(basePackages = {
         "com.shinhan.sbproject.repository",
-        "com.test.chat" // ChatRoomRepository 포함
+
 })
 @EntityScan(basePackages = {
         "com.shinhan.sbproject.entity",
-        "com.test.chat" // ChatRoom 엔티티 포함
+
 })
 @EnableJpaAuditing
 public class SbprojectApplication {

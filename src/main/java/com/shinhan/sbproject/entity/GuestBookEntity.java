@@ -28,4 +28,5 @@ public class GuestBookEntity extends BaseEntity{
                 ", content='" + content + '\'' +
                 '}';
     }
+
 }
