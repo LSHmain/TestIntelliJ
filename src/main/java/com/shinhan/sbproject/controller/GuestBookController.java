@@ -13,7 +13,7 @@ public class GuestBookController {
 
     @Autowired
     GuestBookService guestBookService;
-
+    // TODO: 추후 수정 예정
     @GetMapping("/guest")
     public List<GuestBookDTO> selectAll() {
         return guestBookService.selectAll();
