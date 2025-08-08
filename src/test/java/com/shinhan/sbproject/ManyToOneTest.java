@@ -20,6 +20,24 @@ public class ManyToOneTest {
     @Autowired
     ProfileRepository profileRepository;
 
+    //Member가 가지는 Profile의 개수를 알아내기
+    @Test
+    void f_profileCurrentTrue () {
+        profileRepository.findByCurrentYn(true).forEach(System.out::println);
+    }
+
+    //특정 Member의 Profile 조회하기("회원6")
+    @Test
+    void f_profileMemberById(){
+        String mid = "3번회원";
+//        profileRepository.findAllByMemberMid(mid).forEach(System.out::println);
+        MemberEntity member = MemberEntity.builder()
+                .mid(mid)
+                .build();
+        profileRepository.findAllByMember((member)).forEach(System.out::println);
+    }
+
+
     //Profile 등록...하나의 Member가 7개의 Profile을 갖는다.
     //Profile을 select + 연결된 Member의 정보를 load 하기 위해 member의 수만큼 merber select 진행
     //N+1 문제 발생
