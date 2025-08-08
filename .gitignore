@@ -35,3 +35,33 @@ out/
 
 ### VS Code ###
 .vscode/
+
+
+
+### OS 관련 임시 파일 ###
+.DS_Store
+Thumbs.db
+
+### 로그 / 임시 파일 ###
+*.log
+logs/
+*.tmp
+*.swp
+
+### 환경 변수 / 보안 ###
+application-*.yml
+application-*.yaml
+application-*.properties
+.env
+
+### Gradle 캐시 ###
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+### QueryDSL ###
+src/main/generated/
+generated/
+
+### Test 결과 ###
+test-output/
