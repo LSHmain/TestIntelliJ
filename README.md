@@ -51,5 +51,5 @@ cd ImgTestCardGarden
 | MySQL        | 8.0.33 |
 
 ## 라이선스
-MIT License
+XXX License
 
