@@ -65,6 +65,3 @@ generated/
 
 ### Test 결과 ###
 test-output/
-
-*.png
-*.mp4
