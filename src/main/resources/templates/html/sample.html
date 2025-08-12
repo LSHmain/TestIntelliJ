@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sample</title>
+</head>
+<body>
+    <h1>타임리프 연습</h1>
+    <h2 th:text="${greeting}">여기</h2>
+    <h3>inline 방식: [[${greeting}]]</h3>
+
+<script th:inline="javascript">
+    var data = /*[[${greeting}]]*/ "";
+    console.log(data);
+</script>
+</body>
+</html>
