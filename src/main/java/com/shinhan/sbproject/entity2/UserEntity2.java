@@ -12,8 +12,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @Data
 @Entity
-@Table(name = "t_user1")
-public class UserEntity {
+@Table(name = "t_user2")
+public class UserEntity2 {
 
     @Id
     @Column(name = "user_id")
