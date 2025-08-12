@@ -12,7 +12,7 @@ public class CarDTO {
     @NonNull
     int carId;
 
-
+    //
     final String model;
     int price;
 }

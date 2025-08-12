@@ -1,12 +1,7 @@
 package com.shinhan.sbproject.repository;
 
 import com.shinhan.sbproject.entity.BoardEntity;
-
-
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.PagingAndSortingRepository;
 
 import java.util.List;
 
@@ -21,7 +16,6 @@ public interface BoardRepository extends
     List<BoardEntity> findAllByWriter(String writer);
     List<BoardEntity> findAllByTitleContaining(String title);
     List<BoardEntity> findAllByTitleStartsWith(String title);
-
 //    Page<BoardEntity> findByBnoGreaterThanOrderByBnoAsc(Long bno, Pageable pageable);
 
 }

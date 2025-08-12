@@ -3,10 +3,10 @@ package com.shinhan.sbproject.service;
 import com.shinhan.sbproject.dto.GuestBookDTO;
 import com.shinhan.sbproject.entity.GuestBookEntity;
 import com.shinhan.sbproject.repository.GuestBookEntityRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -35,15 +35,18 @@ public class GuestBookService {
         return entity;
 
     }
+    // 조회시 사용
     public GuestBookDTO entityTODTO(GuestBookEntity entity){
-        GuestBookDTO dto = GuestBookDTO.builder()
-                .gno(entity.getGno())
-                .title(entity.getTitle())
-                .writer(entity.getWriter())
-                .content(entity.getContent())
-                .regDate(entity.getRegDate())
-                .modDate(entity.getModDate())
-                .build();
+//        GuestBookDTO dto = GuestBookDTO.builder()
+//                .gno(entity.getGno())
+//                .title(entity.getTitle())
+//                .writer(entity.getWriter())
+//                .content(entity.getContent())
+//                .regDate(entity.getRegDate())
+//                .modDate(entity.getModDate())
+//                .build();
+        ModelMapper mapper = new ModelMapper();
+        GuestBookDTO dto = mapper.map(entity, GuestBookDTO.class);
 
         return dto;
     }
