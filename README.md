@@ -65,6 +65,10 @@ cd ImgTestCardGarden
     * 로직 버그 수정
     * 보안 패치
 * 예시: 1.0.2 → 1.0.3 (버그만 수정)
+### tags 설정후 모든 tag들 push 방법
+  ```
+  git push origin --tags
+  ```
 
 
 ## 개발환경
