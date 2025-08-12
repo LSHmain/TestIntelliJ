@@ -52,12 +52,16 @@ cd TestIntelliJ
 ```
 
 # 백엔드 실행 (Spring Boot)
+```
 ./gradlew bootRun
+```
 
 # 프론트엔드 실행 (React)
+```
 cd frontend
 npm install
 npm start
+```
 
 
 
