@@ -8,9 +8,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication(
         scanBasePackages = {
-                "com.shinhan.sbproject",
-                "net.firstzone.myapp",
-
+                "com.shinhan",         // 최상위만 잡아도 하위 전부 스캔
+                "net.firstzone.myapp"  // 외부 패키지 필요한 경우만 추가
         }
 )
 @EnableJpaRepositories(basePackages = {
