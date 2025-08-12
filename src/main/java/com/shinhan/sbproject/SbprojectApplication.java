@@ -15,11 +15,13 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableJpaRepositories(basePackages = {
         "com.shinhan.sbproject.repository",
         "com.shinhan.sbproject.repository2",
+        "com.shinhan.sbproject.repositoryfinal",
 
 })
 @EntityScan(basePackages = {
         "com.shinhan.sbproject.entity",
         "com.shinhan.sbproject.entity2",
+        "com.shinhan.sbproject.entityfinal",
 
 })
 @EnableJpaAuditing

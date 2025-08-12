@@ -10,7 +10,7 @@ import lombok.*;
 @Builder
 public class CarDTO {
     @NonNull
-    int carId;
+    Long carId;
 
     //
     final String model;
