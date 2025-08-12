@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<th:block th:fragment="content2">
+    <table>
+        <thead>
+        <tr>
+            <th>bno</th>
+            <th>title</th>
+            <th>writer</th>
+            <th>content</th>
+            <th>regDate</th>
+            <th>modDate</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="board : ${boardList}">
+            <td>[[${board.bno}]]</td>
+            <td>[[${board.title}]]</td>
+            <td>[[${board.writer}]]</td>
+            <td>[[${board.content}]]</td>
+            <td>[[${#temporals.format(board.regDate, 'yyyy-MM-dd HH:mm')}]]</td>
+            <td>[[${#temporals.format(board.modDate, 'yyyy-MM-dd HH:mm')}]]</td>
+        </tr>
+        </tbody>
+    </table>
+</th:block>
+
+<th:block th:replace="~{/layout/exLayout2 :: setContent(~{this::content2})}"></th:block>
+
+</body>
+</html>
