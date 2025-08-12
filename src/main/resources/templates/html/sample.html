@@ -8,7 +8,21 @@
     <h1>타임리프 연습</h1>
     <h2 th:text="${greeting}">여기</h2>
     <h3>inline 방식: [[${greeting}]]</h3>
+    <h1>-------</h1>
+    <h2 th:text="'<p>'+${greeting}+'</p>'">여기!는 없어짐(문자인식)</h2>
+    <h1>---a----</h1>
+    <h2 th:utext="'<p>'+${greeting}+'</p>'">여기!는 없어짐(html 인식)</h2>
+    <h1>-------</h1>
+    <h2>[[${greeting}]]</h2>
 
+    <div>
+        <ul>
+            <li>[[${book.gno}]]</li>
+            <li>[[${book.title}]]</li>
+            <li>[[${book.writer}]]</li>
+            <li>[[${book.content}]]</li>
+        </ul>
+    </div>
 <script th:inline="javascript">
     var data = /*[[${greeting}]]*/ "";
     console.log(data);

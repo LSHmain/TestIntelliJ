@@ -1,5 +1,6 @@
 package com.shinhan.sbproject.entity2;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.shinhan.sbproject.entity.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
@@ -23,6 +24,8 @@ public class FreeBoardEntity extends BaseEntity {
     String writer;
     String content;
 
+    @JsonIgnore //Json으로 return시 replies 제외
+    //@ToString(exclude = "replies")와 비슷한 개념
     @OneToMany(
             cascade = CascadeType.ALL
             , fetch = FetchType.LAZY

@@ -1,10 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
-<body>
-$END$
+<body th:inline="text">  <!-- [[...]] 인라인을 확실히 활성화 -->
+<h1>타임리프 연습</h1>
+
+<!-- 모델에 greeting 있어야 함 -->
+<h2 th:text="${greeting}">여기</h2>
+
+<!-- 인라인 출력 -->
+<h3>inline 방식: [[${greeting}]]</h3>
+
+<h1>-------</h1>
+<!-- 문자열로 처리(HTML 이스케이프됨) -->
+<h2 th:text="'<p>' + ${greeting} + '</p>'">여기!는 없어짐(문자인식)</h2>
+
+<h1>---a----</h1>
+<!-- 실제 HTML로 해석됨(XSS 주의) -->
+<h2 th:utext="'<p>' + ${greeting} + '</p>'">여기!는 없어짐(html 인식)</h2>
+
+<h1>-------</h1>
+<h2>[[${greeting}]]</h2>
+
+<!-- 단일 book 객체가 모델에 있어야 함: model.addAttribute("book", book) -->
+<div>
+    <ul>
+        <li>[[${book.gno}]]</li>
+        <li>[[${book.title}]]</li>
+        <li>[[${book.writer}]]</li>
+        <li>[[${book.content}]]</li>
+    </ul>
+</div>
+
+<script th:inline="javascript">
+    var data = /*[[${greeting}]]*/ "";
+    console.log(data);
+</script>
+<p>login member: [[${session.loginUser}]]</p>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Writer</th>
+        <th>Content</th>
+        <th>Day1</th>
+        <th>Flag</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="board : ${blist}">
+        <td th:text="${board.id}"></td>
+        <td>[[${board.title}]]</td>
+        <td>[[${board.writer}]]</td>
+        <td>[[${board.content}]]</td>
+        <td>[[${#temporals.format(board.regDate,'yyyy-MM-dd')}]]</td>
+        <td th:text="${board.id == searchNo ? '주인공' : '손님'}"></td>
+
+    </tr>
+    </tbody>
+
+    <script th:inline="javascript">
+        let boardList = /*[[${blist}]]*/ [];
+        boardList.forEach((item, index) => {
+            console.log(index + "번째", item)
+        })
+    </script>
+</table>
 </body>
 </html>
