@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+  h2{
+    border : 1px solid green; 
+  }
+  h2.a { color: red;}
+</style>
+</head>
+<body>
+	<h1>fragment test</h1>
+	<h2 class="a">fragment1 - A</h2>
+	<div th:insert="~{fragments/fragment1::part1}"></div>
+	<h2 class="a">fragment1 - B</h2>
+	<div th:insert="~{fragments/fragment1::part2}"></div>
+	<h2 class="a">fragment1 - C</h2>
+	<div th:replace="~{fragments/fragment1::part3}"></div>
+	<h2 class="a">fragment2</h2>
+	<div th:replace="~{fragments/fragment2}"></div>
+
+	<th:block
+		th:replace="~{fragments/fragment3::target(~{this::#ulfirst},~{this::#ulsecond})}">
+		<ul id="ulfirst">
+			<li>JAVA</li>
+			<li>DB</li>
+			<li>Spring</li>
+		</ul>
+		<ul id="ulsecond">
+			<li>HTML</li>
+			<li>CSS</li>
+			<li>JavaScript</li>
+		</ul>
+	</th:block>
+	
+</body>
+</html>

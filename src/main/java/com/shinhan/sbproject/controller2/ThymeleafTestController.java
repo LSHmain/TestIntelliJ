@@ -12,6 +12,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.Arrays;
+import java.util.List;
+
 @Controller
 @RequestMapping("/html")
 public class ThymeleafTestController {
@@ -19,9 +22,27 @@ public class ThymeleafTestController {
     @Autowired
     FreeBoardRepository fRepo;
 
-    @GetMapping("/test")
-    public void f_test(Model model){
+    @GetMapping("/layout1")
+    public String f_layout1(){
 
+        return "layout/exLayout1";
+    }
+
+
+    @GetMapping("/layout2")
+    public String f_template1(){
+
+        return "layout/exTemplate";
+    }
+
+
+    @GetMapping("/test")
+    public String f_test(Model model){
+        model.addAttribute("hello","hello");
+        model.addAttribute("price",1234);
+        model.addAttribute("title","titititit");
+        model.addAttribute("option", List.of());
+        return "html/test";
     }
 
 
