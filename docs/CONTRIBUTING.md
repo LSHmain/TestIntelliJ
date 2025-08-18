@@ -30,3 +30,6 @@
 - 클래스명은 UpperCamelCase, 변수/메서드는 lowerCamelCase
 - 컨트롤러는 `@RestController` 또는 `@Controller`로 명확히 구분
 - 예외 처리는 `GlobalExceptionHandler` 클래스에서 통합 관리
+
+
+- [🗂 버전 관리 정책](./docs/VERSIONING.md)
