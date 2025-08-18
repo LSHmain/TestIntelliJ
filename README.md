@@ -1,7 +1,9 @@
+
 # LINKLE_Backend
 Spring Boot 기반 백엔드 서버
 
 ## 동네 친구 SNS (Local Friends SNS)
+
 
 주변 사람들과 일상을 공유하고, 다양한 활동을 함께 즐길 수 있는 **SNS / 채팅 / 실시간 지도 / 결제 및 구독 / TTS 음성 안내 봇** 통합 플랫폼입니다.  
 Spring Boot와 React를 기반으로, 백엔드-프론트엔드-데이터베이스-배포까지 풀스택 개발과 최신 기술 스택을 활용한 프로젝트입니다.
@@ -45,6 +47,7 @@ Spring Boot와 React를 기반으로, 백엔드-프론트엔드-데이터베이�
 | **배포 환경** | Podman, Red Hat Quay.io |
 
 ---
+
 ## ⚙ 사용 기술 스택
 | 영역       | 기술                                      |
 |------------|-------------------------------------------|
@@ -56,6 +59,7 @@ Spring Boot와 React를 기반으로, 백엔드-프론트엔드-데이터베이�
 | 기타       | TTS API, Toss Payments                    |
 
 ---
+
 
 ## 📦 설치 방법
 
@@ -76,6 +80,7 @@ cd frontend
 npm install
 npm start
 ```
+---
 
 ## 🧱 아키텍처
 ```
@@ -84,7 +89,12 @@ User → React → Spring Boot REST API → MariaDB
                     ↳ JWT Auth
                     ↳ TTS/Payment API
 ```
+---
+## 📚 추가 문서
 
+- [📄 VERSIONING.md](./VERSIONING.md): 버전 관리 전략
+- [🤝 CONTRIBUTING.md](./CONTRIBUTING.md): 브랜치/기여/커밋 가이드
+---
 ## 🪪 라이선스
 이 프로젝트는 MIT 라이선스를 따릅니다. [LICENSE](./LICENSE) 파일을 확인해주세요.
 
