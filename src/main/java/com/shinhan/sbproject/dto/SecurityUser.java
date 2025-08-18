@@ -1,6 +1,6 @@
-package com.shinhan.sbproject.entity;
+package com.shinhan.sbproject.dto;
 
-import com.example.demo.entity.jpa.MemberEntity;
+import com.shinhan.sbproject.entity.MemberEntity;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

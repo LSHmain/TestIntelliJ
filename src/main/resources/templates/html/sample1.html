@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Thymeleaf 연습</title>
+</head>
+<body>
+    <h1>타임 리프 연습</h1>
+    <h2 th:text="${greeting}">여기</h2>
+    <h3>inline 방식 : [[${greeting}]]</h3>
+    <div>
+        <ul>
+            <li>[[${guest}]]</li>
+            <li>[[${guest.bno}]]</li>
+            <li>[[${guest.title}]]</li>
+            <li>[[${guest.writer}]]</li>
+            <li>[[${guest.content}]]</li>
+        </ul>
+    </div>
+    <script th:inline="javascript">
+        var data = /*[[${greeting}]]*/ "default값";
+        console.log(data);
+    </script>
+</body>
+</html>

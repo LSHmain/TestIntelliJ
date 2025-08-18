@@ -1,6 +1,6 @@
 package com.shinhan.sbproject.upload;
 
-import com.shinhan.*;
+
 import com.shinhan.sbproject.entity.MemberEntity;
 import com.shinhan.sbproject.entityfinal.ProfileEntity;
 import com.shinhan.sbproject.repository.MemberRepository;
@@ -37,7 +37,7 @@ import java.util.UUID;
 @RestController
 @Log4j2
 public class UploadController {
-    @Value("${com.shinhan.upload.path}")
+    @Value("${com.shinhan.sbproject.upload.path}")
     private String uploadPath;   //application.properties파일에 설정값을 읽어서 Injection
 
     @Autowired

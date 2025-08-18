@@ -1,6 +1,7 @@
 package com.shinhan.sbproject.controllerfinal;
 
 import com.querydsl.core.types.Predicate;
+import com.shinhan.sbproject.entity.MemberEntity;
 import com.shinhan.sbproject.entityfinal.WebBoardDTO;
 import com.shinhan.sbproject.entityfinal.WebBoardEntity;
 import com.shinhan.sbproject.paging.PageRequestDTO;
@@ -8,11 +9,15 @@ import com.shinhan.sbproject.paging.PageResultDTO;
 import com.shinhan.sbproject.repositoryfinal.WebBoardRepository;
 import com.shinhan.sbproject.repositoryfinal.WebReplyRepository;
 import com.shinhan.sbproject.servicefinal.WebBoardService;
+import jakarta.servlet.http.HttpSession;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestClient;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.function.Function;
 
@@ -46,7 +52,12 @@ public class WebBoardController {
 
 
     @GetMapping("/insert.do")
-    public void f_insertGet(){
+    public void f_insertGet(HttpSession httpSession,@AuthenticationPrincipal UserDetails securituUser, Principal principal, Authentication auth, Model model){
+        MemberEntity member = (MemberEntity) httpSession.getAttribute("loginMember");
+        UserDetails userDetails = (UserDetails) auth.getPrincipal();
+        String mid = securituUser.getUsername();
+        model.addAttribute("loginMember", member);
+        model.addAttribute("loginId", mid);
 
     }
 

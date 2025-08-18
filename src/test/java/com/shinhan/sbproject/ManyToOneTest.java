@@ -2,9 +2,9 @@ package com.shinhan.sbproject;
 
 import com.shinhan.sbproject.entity.MemberEntity;
 import com.shinhan.sbproject.entity.MemberRole;
-import com.shinhan.sbproject.entity.ProfileEntity;
+import com.shinhan.sbproject.entity.ProfileEntity1;
 import com.shinhan.sbproject.repository.MemberRepository;
-import com.shinhan.sbproject.repository.ProfileRepository;
+import com.shinhan.sbproject.repository.ProfileRepository1;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -18,12 +18,12 @@ public class ManyToOneTest {
     MemberRepository memberRepository;
 
     @Autowired
-    ProfileRepository profileRepository;
+    ProfileRepository1 profileRepository1;
 
     //Member가 가지는 Profile의 개수를 알아내기
     @Test
     void f_profileCurrentTrue () {
-        profileRepository.findByCurrentYn(true).forEach(System.out::println);
+        profileRepository1.findByCurrentYn(true).forEach(System.out::println);
     }
 
     //특정 Member의 Profile 조회하기("회원6")
@@ -34,7 +34,7 @@ public class ManyToOneTest {
         MemberEntity member = MemberEntity.builder()
                 .mid(mid)
                 .build();
-        profileRepository.findAllByMember((member)).forEach(System.out::println);
+        profileRepository1.findAllByMember((member)).forEach(System.out::println);
     }
 
 
@@ -46,7 +46,7 @@ public class ManyToOneTest {
     //@ToString에 Exclude를 꼭 추가해야하는 번거러움 제거
     @Test
     void f_selectAllJoin(){
-        profileRepository.findAll().forEach(System.out::println);
+        profileRepository1.findAll().forEach(System.out::println);
     }
 
     @Test
@@ -57,12 +57,12 @@ public class ManyToOneTest {
             return;
         }
         IntStream.rangeClosed(1,4).forEach(i -> {
-            ProfileEntity profileEntity = ProfileEntity.builder()
+            ProfileEntity1 profileEntity1 = ProfileEntity1.builder()
                     .fname("cat" + i + ".jpg")
                     .currentYn(i==4?true:false)
                     .member(member)
                     .build();
-            profileRepository.save(profileEntity);
+            profileRepository1.save(profileEntity1);
         });
     }
 
@@ -74,18 +74,18 @@ public class ManyToOneTest {
             return;
         }
         IntStream.rangeClosed(1,7).forEach(i -> {
-            ProfileEntity profileEntity = ProfileEntity.builder()
+            ProfileEntity1 profileEntity1 = ProfileEntity1.builder()
                     .fname("myFace" + i + ".jpg")
                     .currentYn(i==7?true:false)
                     .member(member)
                     .build();
-            profileRepository.save(profileEntity);
+            profileRepository1.save(profileEntity1);
         });
     }
 
     @Test
     void f_profileAll(){
-        profileRepository.findAll().forEach(System.out::println);
+        profileRepository1.findAll().forEach(System.out::println);
         //member 정보를 자져오기
 //        System.out.println(profileRepository.getMember());
     }

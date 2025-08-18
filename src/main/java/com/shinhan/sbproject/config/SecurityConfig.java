@@ -19,36 +19,50 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         System.out.println("securityFilterChain start");
-        // csrf 토큰 default 설정은 활성화 -> 테스트 위해 비활성화
-        http.csrf((csrf) -> csrf.disable());
-        // 접근 페이지 권한 설정
-        http.authorizeHttpRequests(authorizationManagerRequestMatcherRegistry -> {
-            authorizationManagerRequestMatcherRegistry.requestMatchers(WHITE_LIST).permitAll();
-            authorizationManagerRequestMatcherRegistry.requestMatchers(WHITE_LIST);
-            authorizationManagerRequestMatcherRegistry.requestMatchers(ADMIN_LIST).hasRole("ADMIN");
-            authorizationManagerRequestMatcherRegistry.requestMatchers(MANAGER_LIST).hasRole("MANAGER");
-            authorizationManagerRequestMatcherRegistry.requestMatchers(USER_LIST).hasRole("USER");
-            authorizationManagerRequestMatcherRegistry.anyRequest().authenticated(); // 나머지 로그인 후 접속 가능
-        });
+
+        // CSRF 비활성화 (테스트용)
+        http.csrf(csrf -> csrf.disable());
+
+        // 권한 설정
+        http.authorizeHttpRequests(auth -> auth
+                .requestMatchers(WHITE_LIST).permitAll()
+                .requestMatchers(ADMIN_LIST).hasRole("ADMIN")
+                .requestMatchers(MANAGER_LIST).hasRole("MANAGER")
+                .requestMatchers(USER_LIST).hasRole("USER")
+                .anyRequest().authenticated()
+        );
+
         // 로그인 설정
-        http.formLogin(httpSecurityFormLoginConfigurer -> {
-            httpSecurityFormLoginConfigurer.loginPage("/auth/login")
-                    .usernameParameter("mid")
-                    .passwordParameter("mpassword")
-                    .defaultSuccessUrl("/auth/loginSuccess")
-                    .permitAll();
-        });
+        http.formLogin(login -> login
+                .loginPage("/auth/login")
+                .usernameParameter("mid")
+                .passwordParameter("mpassword")
+                // .defaultSuccessUrl("/auth/loginSuccess") // 생략하고 successHandler 사용
+                .successHandler((request, response, authentication) -> {
+                    response.sendRedirect("/auth/loginSuccess");
+                })
+                .failureHandler((request, response, exception) -> {
+                    request.getSession().setAttribute("loginError", "로그인 실패");
+                    response.sendRedirect("/auth/login");
+                })
+                .permitAll()
+        );
+
         // 로그아웃 설정
-        http.logout(httpSecurityLogoutConfigurer -> {
-            httpSecurityLogoutConfigurer.logoutRequestMatcher(new AntPathRequestMatcher("/auth/logout"))
-                    .logoutSuccessUrl("/auth/login")
-                    .invalidateHttpSession(true);
-        });
-        // 403 오류(접근불가) 처리
-        http.exceptionHandling(exceptionHandlingContext -> {
-            exceptionHandlingContext.accessDeniedPage("/auth/accessDenined");
-        });
+        http.logout(logout -> logout
+                .logoutRequestMatcher(new AntPathRequestMatcher("/auth/logout"))
+                .logoutSuccessUrl("/auth/login")
+                .invalidateHttpSession(true)
+                .deleteCookies("JSESSIONID")
+        );
+
+        // 접근 거부 (403)
+        http.exceptionHandling(ex -> ex
+                .accessDeniedPage("/auth/accessDenined")
+        );
 
         return http.build();
     }
 }
+
+

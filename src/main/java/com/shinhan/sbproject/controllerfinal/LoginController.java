@@ -1,7 +1,7 @@
 package com.shinhan.sbproject.controllerfinal;
 
-import com.example.demo.entity.jpa.MemberEntity;
-import com.example.demo.service.MemberService;
+import com.shinhan.sbproject.entity.MemberEntity;
+import com.shinhan.sbproject.servicefinal.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

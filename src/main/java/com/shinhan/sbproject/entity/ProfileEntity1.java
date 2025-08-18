@@ -12,8 +12,8 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "t_profile")
-public class ProfileEntity {
+@Table(name = "t_profile1")
+public class ProfileEntity1 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long fno;
