@@ -89,11 +89,7 @@ User → React → Spring Boot REST API → MariaDB
                     ↳ JWT Auth
                     ↳ TTS/Payment API
 ```
----
-## 📚 추가 문서
 
-- [📄 VERSIONING.md](./VERSIONING.md): 버전 관리 전략
-- [🤝 CONTRIBUTING.md](./CONTRIBUTING.md): 브랜치/기여/커밋 가이드
 ---
 ## 🪪 라이선스
 이 프로젝트는 MIT 라이선스를 따릅니다. [LICENSE](./LICENSE) 파일을 확인해주세요.
