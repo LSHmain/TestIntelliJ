@@ -19,7 +19,8 @@ public class WebReplyEntity extends BaseEntity {
     Long rno;
     String replyText;
     String replyer;
-
+    @Column(length = 1000)
+    private String imageUrl;
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     WebBoardEntity board; //column name: 앞의 이름과 반대쪽 참조하는 ID 합쳐져 board_bno가 생성된다.

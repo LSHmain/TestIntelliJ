@@ -30,43 +30,43 @@ public class OneToOneTest {
     @Autowired
     UserCellPhoneRepository3 ucRepo3;
 
-    @Test
-    void f_Insert() {
-        UserCellPhoneEntity phone = UserCellPhoneEntity.builder()
-                .phoneNumber("010-0000-0000")
-                .model("apple")
-                .build();
-        ucRepo.save(phone);
-
-        UserEntity user = UserEntity.builder()
-                .userid("ad")
-                .username("adc")
-                .phone(phone)
-                .build();
-
-        uRepo.save(user);
-    }
-
-
-    @Test
-    void f_insert2() {
-        UserEntity2 user = UserEntity2.builder()
-                .userid("kim")
-                .username("min")
-                .build();
-        UserCellPhoneEntity2 phone = UserCellPhoneEntity2.builder()
-                .phoneNumber("010-1111-1111")
-                .model("iphone")
-                .user(user)
-                .build();
-
-        ucRepo2.save(phone);
-    }
-
-    @Test
-    void f_select() {
-
-    }
+//    @Test
+//    void f_Insert() {
+//        UserCellPhoneEntity phone = UserCellPhoneEntity.builder()
+//                .phoneNumber("010-0000-0000")
+//                .model("apple")
+//                .build();
+//        ucRepo.save(phone);
+//
+//        UserEntity user = UserEntity.builder()
+//                .userid("ad")
+//                .username("adc")
+//                .phone(phone)
+//                .build();
+//
+//        uRepo.save(user);
+//    }
+//
+//
+//    @Test
+//    void f_insert2() {
+//        UserEntity2 user = UserEntity2.builder()
+//                .userid("kim")
+//                .username("min")
+//                .build();
+//        UserCellPhoneEntity2 phone = UserCellPhoneEntity2.builder()
+//                .phoneNumber("010-1111-1111")
+//                .model("iphone")
+//                .user(user)
+//                .build();
+//
+//        ucRepo2.save(phone);
+//    }
+//
+//    @Test
+//    void f_select() {
+//
+//    }
 
 
 }

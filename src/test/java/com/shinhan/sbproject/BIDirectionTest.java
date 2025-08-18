@@ -65,27 +65,27 @@ public class BIDirectionTest {
         });
     }
 
-    @Test
-    void f_choiceInsert(){
-       Long bno = 23L;
-       FreeBoardEntity board = boardRepo.findById(bno).orElse(null);
-       if(board==null){
-           System.out.println("존재하지 않는 게시물 입니다.");
-           return;
-       }
-        List<FreeReplyEntity> replyList = board.getReplies();
-        IntStream.rangeClosed(1,3).forEach(j -> {
-            FreeReplyEntity reply = FreeReplyEntity.builder()
-                    .reply("ㅁㄴㅇㄴㅁㅇ"+j)
-                    .replyer("ㄴㅁㅇㅁㄴㅇ"+j%5)
-                    .board(board)
-                    .build();
-            replyList.add(reply);
-        });
-        board.setReplies(replyList);
-        boardRepo.save(board);
-
-    }
+//    @Test
+//    void f_choiceInsert(){
+//       Long bno = 23L;
+//       FreeBoardEntity board = boardRepo.findById(bno).orElse(null);
+//       if(board==null){
+//           System.out.println("존재하지 않는 게시물 입니다.");
+//           return;
+//       }
+//        List<FreeReplyEntity> replyList = board.getReplies();
+//        IntStream.rangeClosed(1,3).forEach(j -> {
+//            FreeReplyEntity reply = FreeReplyEntity.builder()
+//                    .reply("ㅁㄴㅇㄴㅁㅇ"+j)
+//                    .replyer("ㄴㅁㅇㅁㄴㅇ"+j%5)
+//                    .board(board)
+//                    .build();
+//            replyList.add(reply);
+//        });
+//        board.setReplies(replyList);
+//        boardRepo.save(board);
+//
+//    }
 
     //댓글 모두 지우기
     @Test

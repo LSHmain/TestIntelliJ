@@ -73,11 +73,17 @@ public class UploadController {
             	//Member가 없으면 Profile image upload불가 
             	if(memberRepo.findById(mid).orElse(null) == null) break;
             	
-                uploadFile.transferTo(savePath);//원본 파일 저장  이 부분이 upload    
+                uploadFile.transferTo(savePath);//원본 파일 저장  이 부분이 upload
+                System.out.println("저장 경로: " + saveName);
                 String thumbnailSaveName = uploadPath + File.separator + folderPath + File.separator
                         +"s_" + uuid +"_" + fileName; //섬네일 파일 이름은 중간에 s_로 시작하도록              
                 File thumbnailFile = new File(thumbnailSaveName);                
                 Thumbnailator.createThumbnail(savePath.toFile(), thumbnailFile,100,100 );//섬네일 생성
+
+                System.out.println("저장 경로: " + saveName);
+                System.out.println("UploadResultDTO: " + new UploadResultDTO(fileName,uuid,folderPath));
+
+
                 resultDTOList.add(new UploadResultDTO(fileName,uuid,folderPath));
                 
                 //System.out.println(new UploadResultDTO(fileName,uuid,folderPath));
@@ -94,8 +100,9 @@ public class UploadController {
             
             } catch (IOException e) { e.printStackTrace(); }
         }//end for
-        
-         
+
+
+
         return new ResponseEntity<>(resultDTOList, HttpStatus.OK);
     }
 
@@ -106,7 +113,9 @@ public class UploadController {
         File uploadPathFolder = new File(uploadPath, folderPath);
 
         if (uploadPathFolder.exists() == false) {
-            uploadPathFolder.mkdirs();
+//            uploadPathFolder.mkdirs();
+            boolean created = uploadPathFolder.mkdirs();
+            System.out.println(">> 폴더 생성됨: " + uploadPathFolder.getPath() + ", 성공 여부: " + created);
         }
         return folderPath;
     }

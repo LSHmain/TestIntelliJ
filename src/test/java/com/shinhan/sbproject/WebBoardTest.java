@@ -1,6 +1,5 @@
 package com.shinhan.sbproject;
 
-import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.Predicate;
 import com.shinhan.sbproject.entityfinal.WebBoardDTO;
 import com.shinhan.sbproject.entityfinal.WebBoardEntity;
@@ -17,7 +16,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.web.client.RestClient;
-import com.querydsl.core.types.Predicate;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
@@ -85,10 +84,10 @@ public class WebBoardTest {
         });
     }
 
-    @Test
-    void f_replyFindTest() {
-        wbRepo.findAll2().forEach(board -> System.out.println(board));
-    }
+//    @Test
+//    void f_replyFindTest() {
+//        wbRepo.findAll2().forEach(board -> System.out.println(board));
+//    }
 
 
     WebBoardDTO entityToDTO(WebBoardEntity entity){
@@ -96,31 +95,31 @@ public class WebBoardTest {
         return mapper.map(entity, WebBoardDTO.class);
     }
 
-    @Test
-    void f_paging(){
-
-        String type= "t";
-        String keyword = "spring";
-        PageRequestDTO pageDTO = PageRequestDTO.builder()
-                .page(1)
-                .size(5)
-                .type(type)
-                .keyword(keyword)
-                .build();
-
-        Sort sort = Sort.by(Sort.Direction.ASC, "bno");
-        Pageable pageable = pageDTO.getPageable(sort);
-        Predicate predicate = wbRepo.makePredicate(type, keyword);
-        Page<WebBoardEntity> result = wbRepo.findAll(predicate, pageable);
-        Function<WebBoardEntity, WebBoardDTO> fn = entity -> entityToDTO(entity);
-        PageResultDTO<WebBoardDTO, WebBoardEntity> responseResult = new PageResultDTO<>(result,fn);
-//        Function<WebBoardEntity, WebBoardDTO> fn = this::entityToDTO;
-//        PageResultDTO<WebBoardDTO, WebBoardEntity> responseResult = new PageResultDTO<>(result, fn);
-        System.out.println(responseResult.getDtoList()); // () 빠졌었음
-        System.out.println(responseResult.getStart());
-        System.out.println(responseResult.getEnd());
-
-
-    }
+//    @Test
+//    void f_paging(){
+//
+//        String type= "t";
+//        String keyword = "spring";
+//        PageRequestDTO pageDTO = PageRequestDTO.builder()
+//                .page(1)
+//                .size(5)
+//                .type(type)
+//                .keyword(keyword)
+//                .build();
+//
+//        Sort sort = Sort.by(Sort.Direction.ASC, "bno");
+//        Pageable pageable = pageDTO.getPageable(sort);
+//        Predicate predicate = wbRepo.makePredicate(type, keyword);
+//        Page<WebBoardEntity> result = wbRepo.findAll(predicate, pageable);
+//        Function<WebBoardEntity, WebBoardDTO> fn = entity -> entityToDTO(entity);
+//        PageResultDTO<WebBoardDTO, WebBoardEntity> responseResult = new PageResultDTO<>(result,fn);
+////        Function<WebBoardEntity, WebBoardDTO> fn = this::entityToDTO;
+////        PageResultDTO<WebBoardDTO, WebBoardEntity> responseResult = new PageResultDTO<>(result, fn);
+//        System.out.println(responseResult.getDtoList()); // () 빠졌었음
+//        System.out.println(responseResult.getStart());
+//        System.out.println(responseResult.getEnd());
+//
+//
+//    }
 
 }

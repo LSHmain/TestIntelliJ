@@ -3,7 +3,6 @@ package com.shinhan.sbproject.servicefinal;
 import com.shinhan.sbproject.dto.SecurityUser;
 import com.shinhan.sbproject.entity.MemberEntity;
 import com.shinhan.sbproject.repository.MemberRepository;
-import com.shinhan.sbproject.repository.MemberRepository;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

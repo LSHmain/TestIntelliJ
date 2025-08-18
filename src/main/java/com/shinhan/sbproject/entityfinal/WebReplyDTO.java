@@ -22,5 +22,6 @@ public class WebReplyDTO {
     String replyer;
     LocalDateTime regDate;
     private LocalDateTime modDate;
+    private String imageUrl;
     Long bno;
 }

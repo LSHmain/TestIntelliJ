@@ -5,11 +5,6 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import com.shinhan.sbproject.entity.BoardEntity;
-import com.shinhan.sbproject.entityfinal.WebBoardDTO;
-import com.shinhan.sbproject.entityfinal.WebBoardEntity;
-import com.shinhan.sbproject.repositoryfinal.WebBoardRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

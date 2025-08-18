@@ -1,10 +1,6 @@
 package com.shinhan.sbproject.servicefinal;
 
-import com.shinhan.sbproject.entityfinal.WebBoardDTO;
-import com.shinhan.sbproject.entityfinal.WebBoardEntity;
 import com.shinhan.sbproject.entityfinal.WebReplyDTO;
-import com.shinhan.sbproject.paging.PageRequestDTO;
-import com.shinhan.sbproject.paging.PageResultDTO;
 
 import java.util.List;
 

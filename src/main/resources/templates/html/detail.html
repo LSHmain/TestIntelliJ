@@ -11,6 +11,19 @@
 
 <div th:replace="html/detail_modal"></div>
 <script th:inline="javascript">
+
+    var token = $("meta[name='_csrf']").attr("content");
+    var header = $("meta[name='_csrf_header']").attr("content");
+    var beforeSend = function(xhr){ xhr.setRequestHeader(header, token);}
+    console.log(token)
+    function ajax_send(){
+        if(token && header) {
+            $(document).ajaxSend(function(event, xhr, options) {
+                xhr.setRequestHeader(header, token);
+            });
+        }
+    }
+
     $(function() {
         $(".replyCount").click(f_selectAll);
         $(".addReply").click(f_add);
@@ -24,6 +37,7 @@
         var bno = /*[[${board.bno}]]*/0;
         var rno = $("input[name='rno']").val();
         $.ajax({
+            beforeSend,
             url: `/board/${bno}/replies/${rno}`,
             method: "DELETE",
             success: f_insertSuccess
@@ -40,6 +54,7 @@
             rno
         };
         $.ajax({
+            beforeSend,
             url: `/board/${bno}/replies/${rno}`,
             method: "PUT",
             contentType: 'application/json',
@@ -66,6 +81,7 @@
             replyer
         };
         $.ajax({
+            beforeSend,
             url: `/board/${bno}/replies`,
             method: "POST",
             contentType: 'application/json',

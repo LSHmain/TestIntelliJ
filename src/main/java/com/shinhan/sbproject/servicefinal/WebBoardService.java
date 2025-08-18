@@ -4,7 +4,6 @@ import com.shinhan.sbproject.entityfinal.WebBoardDTO;
 import com.shinhan.sbproject.entityfinal.WebBoardEntity;
 import com.shinhan.sbproject.paging.PageRequestDTO;
 import com.shinhan.sbproject.paging.PageResultDTO;
-import org.springframework.data.domain.PageRequest;
 
 import java.util.List;
 
@@ -32,4 +31,5 @@ public interface WebBoardService {
     //5.삭제
     int delete(Long bno);
 
+    List<WebBoardDTO> selectAll();
 }

@@ -2,14 +2,13 @@ package com.shinhan.sbproject.repositoryfinal;
 
 import com.shinhan.sbproject.entity.MemberEntity;
 import com.shinhan.sbproject.entityfinal.ProfileEntity;
-import com.shinhan.sbproject.entityfinal.ProfileEntity;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface ProfileRepository extends JpaRepository<com.shinhan.sbproject.entityfinal.ProfileEntity,Long> {
+public interface ProfileRepository extends JpaRepository<ProfileEntity,Long> {
     
     // @Query 없이 기존 함수를 재정의
     @EntityGraph(attributePaths = {"member"}) // 연관된 속성을 즉시 가져올지 명시, fetch join으로 생성되어 N+1문제를 해결

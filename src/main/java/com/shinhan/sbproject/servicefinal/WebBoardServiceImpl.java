@@ -52,7 +52,7 @@ public class WebBoardServiceImpl implements WebBoardService {
         Page<WebBoardEntity> result = boardRepo.findAll(predicate, pageable);
         Function<WebBoardEntity, WebBoardDTO> fn = entity -> entityToDTO(entity);
         PageResultDTO<WebBoardDTO, WebBoardEntity> responseResult = new PageResultDTO<>(result, fn);
-        return responseResult;
+        return null;
     }
 
 
@@ -92,6 +92,14 @@ public class WebBoardServiceImpl implements WebBoardService {
         return 1;
     }
 
+    @Override
+    public List<WebBoardDTO> selectAll() {
+        List<WebBoardEntity> entityList = boardRepo.findAll();
+        ModelMapper mapper = new ModelMapper();
+        return entityList.stream()
+                .map(entity -> mapper.map(entity, WebBoardDTO.class))
+                .collect(Collectors.toList());
+    }
 
 
 }

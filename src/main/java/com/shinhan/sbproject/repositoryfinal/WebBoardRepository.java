@@ -1,12 +1,11 @@
 package com.shinhan.sbproject.repositoryfinal;
 
 import com.querydsl.core.BooleanBuilder;
+//import com.shinhan.sbproject.entityfinal.QWebBoardEntity;
+//import com.shinhan.sbproject.entitytotal.entityfinal.QWebBoardEntity;
 import com.shinhan.sbproject.entityfinal.QWebBoardEntity;
 import com.shinhan.sbproject.entityfinal.WebBoardEntity;
 import com.querydsl.core.types.Predicate;
-import jakarta.persistence.Entity;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -20,6 +19,7 @@ public interface WebBoardRepository extends JpaRepository<WebBoardEntity,Long> ,
     @EntityGraph(attributePaths = "replies")
 //    @Query("select b from WebBoardEntity b")
     List<WebBoardEntity> findAll();
+
 
 
     @Query("""
