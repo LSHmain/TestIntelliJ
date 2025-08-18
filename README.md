@@ -1,4 +1,9 @@
-# 동네 친구 SNS (Local Friends SNS)
+
+# LINKLE_Backend
+Spring Boot 기반 백엔드 서버
+
+## 동네 친구 SNS (Local Friends SNS)
+
 
 주변 사람들과 일상을 공유하고, 다양한 활동을 함께 즐길 수 있는 **SNS / 채팅 / 실시간 지도 / 결제 및 구독 / TTS 음성 안내 봇** 통합 플랫폼입니다.  
 Spring Boot와 React를 기반으로, 백엔드-프론트엔드-데이터베이스-배포까지 풀스택 개발과 최신 기술 스택을 활용한 프로젝트입니다.
@@ -43,11 +48,24 @@ Spring Boot와 React를 기반으로, 백엔드-프론트엔드-데이터베이�
 
 ---
 
+## ⚙ 사용 기술 스택
+| 영역       | 기술                                      |
+|------------|-------------------------------------------|
+| 백엔드     | Spring Boot, Spring Security, JPA, QueryDSL |
+| 프론트엔드 | React, Axios, Tailwind (or styled-components) |
+| DB         | MariaDB                                   |
+| 인증       | JWT                                       |
+| 배포       | Podman, Red Hat Quay                      |
+| 기타       | TTS API, Toss Payments                    |
+
+---
+
+
 ## 📦 설치 방법
 
 ```bash
 # 저장소 클론
-git clone https://github.com/LSHmain/TestIntelliJ.git
+git clone https://github.com/LINKLE-2025/LINKLE_Backend.git
 cd TestIntelliJ
 ```
 
@@ -62,48 +80,21 @@ cd frontend
 npm install
 npm start
 ```
+---
 
+## 🧱 아키텍처
+```
+plaintext
+User → React → Spring Boot REST API → MariaDB
+                    ↳ JWT Auth
+                    ↳ TTS/Payment API
+```
+---
+## 📚 추가 문서
 
+- [📄 VERSIONING.md](./VERSIONING.md): 버전 관리 전략
+- [🤝 CONTRIBUTING.md](./CONTRIBUTING.md): 브랜치/기여/커밋 가이드
+---
+## 🪪 라이선스
+이 프로젝트는 MIT 라이선스를 따릅니다. [LICENSE](./LICENSE) 파일을 확인해주세요.
 
-
-## 기여가이드
-| 타입  | 설명 |
-|-------|------|
-| feat  | 새로운 기능 추가 |
-| fix   | 버그 수정 |
-| docs  | 문서 수정 |
-| style | 코드 포맷팅, 세미콜론 누락 등 |
-| refactor | 기능 변화 없는 코드 구조 변경 |
-| test  | 테스트 코드 추가/수정 |
-
-## 버전 가이드
-### 주버전 (Major)
-* 형식: X.0.0
-* 호환성 깨지는 변화가 있을 때 올립니다.
-* 예:
-    * API나 데이터 구조 변경
-    * 이전 버전과 호환되지 않는 기능 제거
-    * 프로젝트 전면 리팩터링
-* 예시: 1.5.2 → 2.0.0 (호환성 없는 큰 변화)
-
-### 부버전 (Minor)
-* 형식: 1.X.0
-* 새로운 기능 추가 (기존 기능과 호환 유지)
-* 예:
-    * 새로운 API 추가
-    * 기존 기능 확장
-    * UI 개선
-* 예시: 1.5.2 → 1.6.0 (기존 기능은 그대로, 새 기능 추가)
-
-### 수정버전 (Patch)
-* 형식: 1.0.X
-* 버그 수정, 성능 개선, 테스트 기능, 사소한 변경
-* 예:
-    * 오타 수정
-    * 로직 버그 수정
-    * 보안 패치
-* 예시: 1.0.2 → 1.0.3 (버그만 수정)
-### tags 설정후 모든 tag들 push 방법
-  ```
-  git push origin --tags
-  ```

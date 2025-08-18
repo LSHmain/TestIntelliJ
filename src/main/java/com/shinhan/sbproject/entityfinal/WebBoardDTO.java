@@ -16,7 +16,7 @@ public class WebBoardDTO {
     String title;
     String writer;
     String content;
-
+    private String imageUrl;
     LocalDateTime regDate, modDate;
     List<WebReplyEntity> replies;
     Long replyCount;

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Board 상세보기</title>
+  <meta charset="UTF-8" />
+</head>
+<body>
+[[${board}]]
+<h1>Board 상세보기</h1>
+<form th:action="@{/webboard/update}" method="post">
+  <div class="mb-3 row">
+    <label for="bno" class="col-sm-2 col-form-label">bno</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" readonly="readonly" name="bno" th:value="${board.bno}">
+    </div>
+  </div>
+
+  <div class="mb-3 row">
+    <!-- label의 for 속성 추가, c -> for 로 수정 -->
+    <label for="title" class="col-sm-2 col-form-label">title</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="title" th:value="${board.title}">
+    </div>
+  </div>
+
+  <div class="mb-3 row">
+    <label for="content" class="col-sm-2 col-form-label">content</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="content" th:value="${board.content}">
+    </div>
+  </div>
+
+  <div class="mb-3 row">
+    <label for="writer" class="col-sm-2 col-form-label">writer</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="writer" th:value="${board.writer}">
+    </div>
+  </div>
+
+  <div class="mb-3 row">
+    <label class="col-sm-2 col-form-label">작성일</label>
+    <div class="col-sm-10">
+      <input type="text" readonly="readonly" class="form-control" name="regDate" th:value="${board.regDate}">
+    </div>
+  </div>
+
+  <div class="mb-3 row">
+    <label class="col-sm-2 col-form-label">수정일</label>
+    <div class="col-sm-10">
+      <input type="text" readonly="readonly" class="form-control" name="modDate" th:value="${board.modDate}">
+    </div>
+  </div>
+
+  <div class="mb-3 row">
+    <div class="col-sm-10">
+      <input type="submit" value="수정" class="btn btn-success">
+      <a th:href="@{/board/delete.do(bno=${board.bno})}" class="btn btn-danger">삭제</a>
+    </div>
+  </div>
+</form>
+<div>
+  <div class="mt-4">
+    <h5>
+      <button type="button" class="btn btn-primary">
+        <span class="badge badge-secondary addReply">Add Reply</span>
+      </button>
+    </h5>
+    <h5>
+      <button type="button" class="btn btn-primary">
+							<span class="badge badge-secondary replySelectAll">Reply
+								Count(클릭시list) : [[${board.replyCount}]]</span>
+      </button>
+    </h5>
+  </div>
+  <div class="list-group replyList">!!!!!여기~~~~~</div>
+</div>
+
+<!-- Modal : 댓글추가하거나 상세보기에 이용할 예정 -->
+<div class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">등록/수정</h5>
+        <button type="button" class="close" data-dismiss="modal"
+                aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <input class="form-control" type="text" name="replyText"
+                 placeholder="댓글" /> <input class="form-control" type="text"
+                                            name="replyer" placeholder="작성자" /> <input type="hidden"
+                                                                                       name="rno"> <input type="hidden" name="regdate">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning repltModify">수정</button>
+        <button type="button" class="btn btn-primary replySave">입력</button>
+        <button type="button" class="btn btn-danger replyRemove">삭제</button>
+        <button type="button"
+                class="btn btn-outline-secondary replyClose"
+                data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script th:inline="javascript">
+  $(function(){
+    $(".replySelectAll").click(f_selectAll);
+  })
+
+  function f_selectAll(){
+    var bno = /*[[${board.bno}]]*/ 0;
+    $.ajax({
+      url: `/board/${bno}/replies`,
+      success:f_display
+    })
+  }
+  function f_display(replyList){
+    var output = '';
+    $(".replyCount").html("Reply Count : " + replyList.length);
+    $.each(replyList, function(index, reply){
+      output += `
+			      <div class="col-sm-6">
+					  <div class='card card-body' data-rno='${reply.rno}' style="width: 28rem;"  >
+	  				        <b>${reply.rno}</b>
+	  				        <h5 class='card-title'>${reply.replyText}</h5>
+	  				        <h5 class='card-subtitle mb-2 text-muted'>${reply.replyer}</h5>
+	  				        <p class='card-text mb-2 text-muted card-regdate'>등록일: ${reply.regDate} </p>
+	  				        <p class='card-text mb-2 text-muted'>수정일: ${reply.modDate} </p>
+	  				        <img th:src="@{${board.imageUrl}}" style="max-width: 400px;" />
+	  				  </div>
+  			     </div> `;
+
+    });
+    $(".replyList").html(output);
+  }
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>sample6</title>
+</head>
+<body>
+    <h2 th:text="${now}"/>
+    <h2 th:text="${#dates.format(now, 'yyyy-MM-dd')}"/>
+    <div th:with="aa=${#dates.format(now, 'yyyy-MM-dd')}">
+        <h2>[[${aa}]]</h2>
+    </div>
+    <h2 th:text="${price}"/>
+    <h2 th:text="${#numbers.formatInteger(price, 3, 'COMMA')}"/>
+    <h2 th:text="${#numbers.formatDecimal(price, 5, 10, 'POINT')}"/>
+    <div th:with="bb=${#numbers.formatDecimal(99.67890, 5, 10, 'POINT')}">
+        <h2>[[${bb}]]</h2>
+    </div>
+    <h2 th:text="${title}"/>
+    <h2 th:text="${#strings.replace(title,'s','<b>s</b>')}"/>
+    <h2 th:utext="${#strings.replace(title,'s','<i>s</i>')}"></h2>
+    <h2 th:text="${#strings.toUpperCase(title)}"/>
+    <ul>
+        <li th:each="myword:${#strings.listSplit(title,'')}">
+            [[${myword}]]
+        </li>
+    </ul>
+<h2>[[${options}]]</h2>
+<ul>
+    <li th:each="myitem:${options}">
+        [[${myitem}]]
+    </li>
+</ul>
+
+<h2>링크 연습</h2>
+<ul>
+    <li><a th:href="@{http://localhost:8989/freeboard}">freeboard 가기(절대 1)</a></li>
+    <li><a th:href="@{/freeboard}">freeboard 가기(절대 2)</a></li>
+    <li><a th:href="@{freeboard}">freeboard 가기(상대)</a></li>
+    <li><a th:href="@{freeboard(score=100)}">freeboard 가기(상대+param)</a></li>
+</ul>
+</body>
+</html>

@@ -1,7 +1,6 @@
 package com.shinhan.sbproject;
 
 import com.querydsl.core.BooleanBuilder;
-import com.querydsl.core.types.Predicate;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.shinhan.sbproject.entity.BoardEntity;
 import com.shinhan.sbproject.entity.QBoardEntity;
