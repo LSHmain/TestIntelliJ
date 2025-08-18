@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.shinhan.sbproject.entity.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.BatchSize;
 
 import java.util.List;
 
@@ -29,6 +30,7 @@ public class WebBoardEntity extends BaseEntity {
 
     //fetch는 LAZY가 default
     @JsonIgnore //JSON 생성시 무시된다.
+//    @BatchSize(size = 100)
     @OneToMany(
             mappedBy = "board",
             cascade = CascadeType.ALL,

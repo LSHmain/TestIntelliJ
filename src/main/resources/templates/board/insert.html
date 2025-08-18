@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Board 등록</title>
+  <meta charset="UTF-8" />
+</head>
+<body>
+<h1>Board 등록</h1>
+<form th:action="@{/board/insert.do}" method="post">
+  <div class="mb-3 row">
+    <label for="title" class="col-sm-2 col-form-label">title</label>
+    <div class="col-sm-10">
+      <input type="text" id="title" class="form-control" name="title" placeholder="제목을 입력하세요" required>
+    </div>
+  </div>
+
+  <div class="mb-3 row">
+    <label for="content" class="col-sm-2 col-form-label">content</label>
+    <div class="col-sm-10">
+      <textarea id="content" class="form-control" name="content" rows="5" placeholder="내용을 입력하세요" required></textarea>
+    </div>
+  </div>
+
+  <div class="mb-3 row">
+    <label for="writer" class="col-sm-2 col-form-label">writer</label>
+    <div class="col-sm-10">
+      <input type="text" id="writer" class="form-control" name="writer" placeholder="작성자를 입력하세요" required>
+    </div>
+  </div>
+
+  <div class="mb-3 row">
+    <div class="col-sm-10">
+      <input type="submit" value="등록" class="btn btn-primary">
+      <a th:href="@{/board/list.do}" class="btn btn-secondary">목록으로</a>
+    </div>
+  </div>
+</form>
+</body>
+</html>
