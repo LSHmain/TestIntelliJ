@@ -89,6 +89,7 @@ User → React → Spring Boot REST API → MariaDB
                     ↳ JWT Auth
                     ↳ TTS/Payment API
 ```
+
 ---
 ## 🪪 라이선스
 이 프로젝트는 MIT 라이선스를 따릅니다. [LICENSE](./LICENSE) 파일을 확인해주세요.
